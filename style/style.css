@@ -1,0 +1,44 @@
+:root {
+    --withe-color: white;
+    --black-color: black;
+    --margin: 0;
+    --padding: 0;
+}
+
+/* Estilo para el cuerpo de la página */
+body {
+    margin: var(--margin);
+    padding: var(--padding);
+    font-family: Arial, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: var(--margin);
+    padding: var(--padding);
+    background-color: var(--withe-color);
+}
+
+li {
+    display: inline-block;
+}
+
+li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--withe-color);
+}
+
+li a:hover {
+    background-color: var(--withe-color);
+}
+
+div {
+    display: none;
+    padding: 20px;
+}
+
+h2 {
+    margin-top: 0;
+}
