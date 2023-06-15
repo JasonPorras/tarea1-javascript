@@ -1,26 +1,27 @@
 :root {
     --withe-color: white;
     --black-color: black;
-    --margin: 0;
-    --padding: 0;
 }
 
 /* Estilo para el cuerpo de la página */
 body {
-    margin: var(--margin);
-    padding: var(--padding);
+    margin: 0px;
+    padding: 0px;
     font-family: Arial, sans-serif;
 }
 
 ul {
     list-style-type: none;
-    margin: var(--margin);
-    padding: var(--padding);
-    background-color: var(--withe-color);
+    margin: 0px;
 }
 
 li {
     display: inline-block;
+    font-weight: bold;
+    font-size: 22px;
+    margin: 0px 30px;
+    width: 150px;
+    text-align: center;
 }
 
 li a {
@@ -28,17 +29,33 @@ li a {
     padding: 10px 20px;
     text-decoration: none;
     color: var(--withe-color);
+    padding-bottom: 15px;
 }
 
 li a:hover {
     background-color: var(--withe-color);
+    color: var(--black-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
-div {
-    display: none;
-    padding: 20px;
+.container-main {
+    display: flex;
+    justify-content: center;
+    background-color: var(--black-color);
+    padding: 50px 0px 0px;
 }
 
-h2 {
-    margin-top: 0;
-}
+
+.tab {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #eaeaea;
+    cursor: pointer;
+  }
+  
+  .tab.selected {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
