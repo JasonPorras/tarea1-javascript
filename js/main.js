@@ -1,41 +1,41 @@
-var tabs = document.getElementsByClassName('tab');
+import { selectedNav } from "./selectedMenu.js"
 
-for (var i = 0; i < tabs.length; i++) {
-  tabs[i].addEventListener('click', function() {
-    var selectedTab = this;
-    
-    // Remover la clase 'selected' de todos los tabs
-    for (var j = 0; j < tabs.length; j++) {
-      tabs[j].classList.remove('selected');
-    }
-    
-    // Agregar la clase 'selected' al tab seleccionado
-    selectedTab.classList.add('selected');
-  });
-}
+const buttonValues = ["Music", "Sports", "Business", "Food", "Art","hola"];
+
+const tabList = document.getElementById("tabList");
+
+buttonValues.forEach(function(value) {
+  const li = document.createElement("li");
+  const button = document.createElement("button");
+
+  button.classList.add("tab");
+  button.textContent = value;
+  
+  li.appendChild(button);
+  tabList.appendChild(li);
+
+  console.log(value);
+});
 
 
-// // tabs
-  
-//   // modal sign in }
-//   function modal() {
-//     const open = document.getElementById('open')
-//     const modal = document.getElementById('modal_container')
-//     const close = document.getElementById('close')
-//     const scroll = document.querySelector('body')
-  
-//     open.addEventListener('click', () => {
-//       btn.classList.toggle('header__button--active')
-//       document
-//         .querySelector('.header__links')
-//         .classList.toggle('header__links--active')
-  
-//       modal.classList.add('show')
-//       scroll.classList.add('scroll-body')
+selectedNav();
+
+
+// const url = `https://knassbani2.execute-api.us-east-2.amazonaws.com/events/music`;
+
+// function changeCategory() {
+//   console.log(url);
+
+//   fetch(url)
+//     .then(response => response.json())
+//     .then((data) => {
+//       data.forEach(evento => {
+//       });
+//       console.log(data);
 //     })
-  
-//     close.addEventListener('click', () => {
-//       modal.classList.remove('show')
-//       scroll.classList.remove('scroll-body')
-//     })
-//   }
+//     .catch(error => console.log(error));
+// }
+
+// changeCategory();
+
+

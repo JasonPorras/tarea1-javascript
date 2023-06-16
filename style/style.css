@@ -1,5 +1,5 @@
 :root {
-    --withe-color: white;
+    --white-color: white;
     --black-color: black;
 }
 
@@ -17,23 +17,25 @@ ul {
 
 li {
     display: inline-block;
-    font-weight: bold;
-    font-size: 22px;
     margin: 0px 30px;
-    width: 150px;
-    text-align: center;
 }
 
-li a {
+li button {
     display: block;
     padding: 10px 20px;
     text-decoration: none;
-    color: var(--withe-color);
+    color: var(--white-color);
     padding-bottom: 15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 22px;
+    width: 140px;
 }
 
-li a:hover {
-    background-color: var(--withe-color);
+li button:hover {
+    background-color: var(--white-color);
     color: var(--black-color);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -46,16 +48,11 @@ li a:hover {
     padding: 50px 0px 0px;
 }
 
+.tab.selected {
+    background-color: var(--white-color);
+    color: var(--black-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
 
-.tab {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #eaeaea;
-    cursor: pointer;
-  }
-  
-  .tab.selected {
-    background-color: #ffffff;
-    color: #000000;
-  }
-  
+
