@@ -1,41 +1,37 @@
-import { selectedNav } from "./selectedMenu.js"
+import { renderStructureTabs, tabsSelected } from "./initPage/initPage.js";
+import { tabsButton } from "../config/config.js";
 
-const buttonValues = ["Music", "Sports", "Business", "Food", "Art","hola"];
+renderStructureTabs();
+tabsSelected();
 
-const tabList = document.getElementById("tabList");
+function getIdBottonSelected() {
+  const botones = document.querySelectorAll(".tab");
+  let ultimoIdClickeado = "";
 
-buttonValues.forEach(function(value) {
-  const li = document.createElement("li");
-  const button = document.createElement("button");
+  botones.forEach(boton => {
+    boton.addEventListener('click', function() {
+      const valorBoton = boton.id;
+      if (valorBoton !== ultimoIdClickeado) {
+        ultimoIdClickeado = valorBoton;
+        fetchEventsByCategory(valorBoton);
+      }
+    });
+  });
+}
 
-  button.classList.add("tab");
-  button.textContent = value;
-  
-  li.appendChild(button);
-  tabList.appendChild(li);
+function fetchEventsByCategory(valorBoton) {
+  const originUrl = "https://knassbani2.execute-api.us-east-2.amazonaws.com/events/";
+  const url = originUrl + valorBoton;
 
-  console.log(value);
-});
+  fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      data.forEach(evento => {
+      });
+      console.log(data);
+    })
+    .catch(error => console.log(error));
+}
 
-
-selectedNav();
-
-
-// const url = `https://knassbani2.execute-api.us-east-2.amazonaws.com/events/music`;
-
-// function changeCategory() {
-//   console.log(url);
-
-//   fetch(url)
-//     .then(response => response.json())
-//     .then((data) => {
-//       data.forEach(evento => {
-//       });
-//       console.log(data);
-//     })
-//     .catch(error => console.log(error));
-// }
-
-// changeCategory();
-
+getIdBottonSelected();
 
