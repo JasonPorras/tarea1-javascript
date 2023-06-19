@@ -8,8 +8,8 @@ function renderStructureTabs() {
     const button = document.createElement("button");
 
     button.classList.add("tab");
-    button.textContent = value.name;
-    button.setAttribute("id", "" + value.id.toLowerCase());
+    button.textContent = value;
+    button.setAttribute("id", "" + value.toLowerCase());
 
     li.appendChild(button);
     tabList.appendChild(li);

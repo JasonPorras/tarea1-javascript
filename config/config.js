@@ -1,26 +1,5 @@
 //content for tabs in the page.
 
-const tabsButton = [
-  {
-    id: "Music",
-    name: "Music",
-  },
-  {
-    id: "Sports",
-    name: "Sports",
-  },
-  {
-    id: "Business",
-    name: "Business",
-  },
-  {
-    id: "Food",
-    name: "Food",
-  },
-  {
-    id: "Art",
-    name: "Art",
-  },
-];
+const tabsButton = ["Music", "Sports", "Business", "Food", "Art"];
 
 export { tabsButton };
