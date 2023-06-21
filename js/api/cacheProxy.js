@@ -22,8 +22,3 @@ const handler = {
 const cacheProxy = new Proxy(cache, handler);
 
 export { cacheProxy };
-
-
-function hola(){
-  
-}

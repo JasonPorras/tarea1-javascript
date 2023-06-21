@@ -1,5 +1,5 @@
 import { cacheProxy } from "../api/cacheProxy.js";
-import { tabsButton } from "../../config/config.js";
+import { tabsButton } from "../../js/config/config.js";
 
 function renderStructureTabs() {
   const tabList = document.getElementById("tabList");
@@ -28,7 +28,6 @@ function tabsSelected() {
       tabsArray.forEach((tab) => {
         tab.classList.remove("selected");
       });
-
       selectedTab.classList.add("selected");
     });
   });
@@ -38,16 +37,16 @@ async function getIdBottonSelected() {
   const botones = document.querySelectorAll(".tab");
   let ultimoIdClickeado = "";
 
- botones.forEach(boton => {
-    boton.addEventListener('click', async function() {
+  botones.forEach(boton => {
+    boton.addEventListener('click', async function () {
       const valorBoton = boton.id;
       if (valorBoton !== ultimoIdClickeado) {
         ultimoIdClickeado = valorBoton;
       }
-      console.log( await cacheProxy[valorBoton])
+      console.log(await cacheProxy[valorBoton])
     });
   });
-  
+
   const primerBoton = botones[0];
   const valorPrimerBoton = primerBoton.id;
 
