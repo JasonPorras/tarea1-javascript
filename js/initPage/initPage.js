@@ -17,39 +17,52 @@ function renderStructureTabs() {
   });
 }
 
-function tabsSelected() {
+async function updateEventInformation(eventData) {
+  console.log(eventData);
+
+  const data = await cacheProxy[eventData]
+  console.log(data);
+  const tabContent = document.getElementById("tabContent");
+
+  data.forEach(function ({date,id,image,location:{address,city,state},price,title}) {
+    console.log(id);
+  tabContent.innerHTML = "";
+
+  const imageElement = document.createElement("img");
+  imageElement.src = image;
+  imageElement.alt = title;
+
+  const locationElement = document.createElement("h2");
+  locationElement.textContent = `${address}${city}${state}`;
+
+  tabContent.appendChild(imageElement);
+  tabContent.appendChild(locationElement);
+
+})
+
+}
+function bottonSelected() {
   const tabs = document.getElementsByClassName("tab");
   const tabsArray = [...tabs];
 
-  tabsArray.forEach((tab) => {
-    tab.addEventListener("click", function () {
-      const selectedTab = this;
+  tabsArray.forEach((tab, index) => {
+    tab.addEventListener("click", async function () {
+
+      const eventData = tab.id;
+      updateEventInformation(eventData);
 
       tabsArray.forEach((tab) => {
         tab.classList.remove("selected");
       });
-      selectedTab.classList.add("selected");
+      tab.classList.add("selected");
     });
-  });
-}
 
-async function getIdBottonSelected() {
-  const botones = document.querySelectorAll(".tab");
-  let ultimoIdClickeado = "";
-
-  botones.forEach(boton => {
-    boton.addEventListener('click', async function () {
-      const valorBoton = boton.id;
-      if (valorBoton !== ultimoIdClickeado) {
-        ultimoIdClickeado = valorBoton;
-      }
-      console.log(await cacheProxy[valorBoton])
-    });
+    if (index === 0) {
+      tab.classList.add("selected");
+      const eventData = tab.id;
+      updateEventInformation(eventData);
+    }
   });
 
-  const primerBoton = botones[0];
-  const valorPrimerBoton = primerBoton.id;
-
 }
-
-export { renderStructureTabs, tabsSelected, getIdBottonSelected };
+export { renderStructureTabs, bottonSelected };

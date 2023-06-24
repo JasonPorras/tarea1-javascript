@@ -4,7 +4,7 @@ const cache = {};
 
 const handler = {
   get: async (obj, prop) => {
-    if (obj.hasOwnProperty(prop)) {
+    if (obj[prop]) {
       console.log("existe");
       return Reflect.get(obj, prop);
     } else {
