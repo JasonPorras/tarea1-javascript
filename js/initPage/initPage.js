@@ -4,13 +4,13 @@ import { tabsButton } from "../../js/config/config.js";
 function renderStructureTabs() {
   const tabList = document.getElementById("tabList");
 
-  tabsButton.forEach(function (value) {
+  tabsButton.forEach(function ({label, category}) {
     const li = document.createElement("li");
     const button = document.createElement("button");
 
     button.classList.add("tab");
-    button.textContent = value;
-    button.setAttribute("id", "" + value.toLowerCase());
+    button.textContent = label;
+    button.setAttribute("dataCategory", category);
 
     li.appendChild(button);
     tabList.appendChild(li);
@@ -18,29 +18,26 @@ function renderStructureTabs() {
 }
 
 async function updateEventInformation(eventData) {
-  console.log(eventData);
 
-  const data = await cacheProxy[eventData]
-  console.log(data);
+  const data = await cacheProxy[eventData];
+  
   const tabContent = document.getElementById("tabContent");
+  tabContent.innerHTML = ""; 
 
-  data.forEach(function ({date,id,image,location:{address,city,state},price,title}) {
-    console.log(id);
-  tabContent.innerHTML = "";
+  data.forEach(function ({ date, id, image, location: { address, city, state }, price, title }) {
 
-  const imageElement = document.createElement("img");
-  imageElement.src = image;
-  imageElement.alt = title;
+    const imageElement = document.createElement("img");
+    imageElement.src = image;
+    imageElement.alt = title;
 
-  const locationElement = document.createElement("h2");
-  locationElement.textContent = `${address}${city}${state}`;
+    const locationElement = document.createElement("h2");
+    locationElement.textContent = `${address}${city}${state}`;
 
-  tabContent.appendChild(imageElement);
-  tabContent.appendChild(locationElement);
-
-})
-
+    tabContent.appendChild(imageElement);
+    tabContent.appendChild(locationElement);
+  });
 }
+
 function bottonSelected() {
   const tabs = document.getElementsByClassName("tab");
   const tabsArray = [...tabs];
