@@ -1,4 +1,4 @@
-async function  fetchEventsByCategory(category) {
+async function fetchEventsByCategory(category) {
   const originUrl = "https://knassbani2.execute-api.us-east-2.amazonaws.com/events/";
   const url = `${originUrl}${category}`;
 

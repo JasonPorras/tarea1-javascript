@@ -1,5 +1,6 @@
 import { cacheProxy } from "../api/cacheProxy.js";
 import { tabsButton } from "../../js/config/config.js";
+import { formatLocation, formatDate, formatPrice } from "../utils/fomatEventsCards.js"
 
 function renderStructureTabs() {
   const tabList = document.getElementById("tabList");
@@ -17,30 +18,46 @@ function renderStructureTabs() {
   });
 }
 
-async function updateEventInformation(eventData) {
-  console.log(eventData);
-
-  const data = await cacheProxy[eventData]
-  console.log(data);
+async function renderEventsCards(eventData) {
+  const data = await cacheProxy[eventData];
   const tabContent = document.getElementById("tabContent");
-
-  data.forEach(function ({date,id,image,location:{address,city,state},price,title}) {
-    console.log(id);
   tabContent.innerHTML = "";
 
-  const imageElement = document.createElement("img");
-  imageElement.src = image;
-  imageElement.alt = title;
+  data.forEach(({ image, title, location: { address, city, state }, date, price }) => {
+    const tabContentCard = document.createElement("div");
+    tabContentCard.classList.add("tabContentCard");
 
-  const locationElement = document.createElement("h2");
-  locationElement.textContent = `${address}${city}${state}`;
+    const imgContent = document.createElement("img");
+    imgContent.classList.add('imgContent');
+    imgContent.src = image;
+    imgContent.alt = title;
 
-  tabContent.appendChild(imageElement);
-  tabContent.appendChild(locationElement);
+    const titleContent = document.createElement('h3');
+    titleContent.classList.add('titleContent');
+    titleContent.textContent = title;
 
-})
+    const timeContent = document.createElement('p');
+    timeContent.classList.add('timeContent');
+    timeContent.textContent = formatDate(date);
 
+    const locationContent = document.createElement("p");
+    locationContent.classList.add('locationContent');
+    locationContent.textContent = formatLocation(address, city, state);
+
+    const priceContent = document.createElement("p");
+    priceContent.classList.add("priceContent");
+    priceContent.textContent = formatPrice(price);
+
+    tabContentCard.appendChild(imgContent);
+    tabContentCard.appendChild(titleContent);
+    tabContentCard.appendChild(timeContent);
+    tabContentCard.appendChild(locationContent);
+    tabContentCard.appendChild(priceContent);
+
+    tabContent.appendChild(tabContentCard);
+  });
 }
+
 function bottonSelected() {
   const tabs = document.getElementsByClassName("tab");
   const tabsArray = [...tabs];
@@ -49,7 +66,7 @@ function bottonSelected() {
     tab.addEventListener("click", async function () {
 
       const eventData = tab.id;
-      updateEventInformation(eventData);
+      renderEventsCards(eventData);
 
       tabsArray.forEach((tab) => {
         tab.classList.remove("selected");
@@ -60,9 +77,10 @@ function bottonSelected() {
     if (index === 0) {
       tab.classList.add("selected");
       const eventData = tab.id;
-      updateEventInformation(eventData);
+      renderEventsCards(eventData);
     }
   });
 
 }
+
 export { renderStructureTabs, bottonSelected };
