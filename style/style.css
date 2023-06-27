@@ -41,7 +41,7 @@ li button:hover {
     border-top-right-radius: 5px;
 }
 
-.containerMain {
+.container-main {
     display: flex;
     justify-content: center;
     background-color: var(--black-color);
@@ -55,17 +55,3 @@ li button:hover {
     border-top-right-radius: 5px;
 }
 
-#tabContent {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-  }
-  
-  #tabContent img {
-    width: 100%;
-    height: auto;
-  }
-  
-  #tabContent h2 {
-    margin: 0;
-  }
