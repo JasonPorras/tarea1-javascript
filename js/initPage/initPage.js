@@ -1,5 +1,5 @@
 import { cacheProxy } from "../api/cacheProxy.js";
-import { tabsButton } from "../../js/config/config.js";
+import { tabsButton,defaultImage,alternateImage } from "../../js/config/config.js";
 import { formatLocation, formatDate, formatPrice } from "../utils/fomatEventsCards.js"
 
 function renderStructureTabs() {
@@ -32,6 +32,18 @@ async function renderEventsCards(eventData) {
     imgContent.src = image;
     imgContent.alt = title;
 
+    const divBtnLike = document.createElement("div");
+    divBtnLike.classList.add("divBtnLike");
+
+    const buttonContent = document.createElement("button");
+    buttonContent.classList.add("btnLike");
+    buttonContent.type = "button";
+
+    const likeContent = document.createElement('img');
+    likeContent.classList.add('likeContent');
+    likeContent.src = "/images/likeDefault.png";
+    likeContent.alt = "like card events";
+
     const titleContent = document.createElement('h3');
     titleContent.classList.add('titleContent');
     titleContent.textContent = title;
@@ -48,13 +60,35 @@ async function renderEventsCards(eventData) {
     priceContent.classList.add("priceContent");
     priceContent.textContent = formatPrice(price);
 
-    tabContentCard.appendChild(imgContent);
-    tabContentCard.appendChild(titleContent);
-    tabContentCard.appendChild(timeContent);
-    tabContentCard.appendChild(locationContent);
-    tabContentCard.appendChild(priceContent);
+    buttonContent.appendChild(likeContent);
+    divBtnLike.appendChild(buttonContent);
 
+    tabContentCard.append(
+      imgContent,
+      divBtnLike,
+      titleContent,
+      timeContent,
+      locationContent,
+      priceContent
+    );
     tabContent.appendChild(tabContentCard);
+
+    clickbuttonLike(buttonContent);
+  });
+}
+
+function clickbuttonLike(buttonContent) {
+  buttonContent.addEventListener("click", function () {
+    const image = buttonContent.querySelector("img");
+    const isLiked = image.classList.contains("liked");
+
+    if (isLiked) {
+      image.src = defaultImage;
+      image.classList.remove("liked");
+    } else {
+      image.src = alternateImage;
+      image.classList.add("liked");
+    }
   });
 }
 
@@ -81,4 +115,4 @@ function bottonSelected() {
   });
 }
 
-export { renderStructureTabs, bottonSelected };
+export { renderStructureTabs, bottonSelected,};

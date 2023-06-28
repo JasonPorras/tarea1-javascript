@@ -1,3 +1,4 @@
+//tabs main
 const tabsButton = [
   {
     label: "Music",
@@ -21,4 +22,10 @@ const tabsButton = [
   }
 ];
 
-export { tabsButton };
+//path and image name for the like.
+
+const defaultImage = "/images/likeDefault.png";
+const alternateImage = "/images/likeCardEvent.png";
+
+
+export { tabsButton,defaultImage,alternateImage };
