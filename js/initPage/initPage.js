@@ -1,5 +1,5 @@
 import { cacheProxy } from "../api/cacheProxy.js";
-import { tabsButton,defaultImage,alternateImage } from "../../js/config/config.js";
+import { tabsButton, defaultImage, alternateImage } from "../../js/config/config.js";
 import { formatLocation, formatDate, formatPrice } from "../utils/fomatEventsCards.js"
 
 function renderStructureTabs() {
@@ -20,29 +20,18 @@ function renderStructureTabs() {
 
 async function renderEventsCards(eventData) {
   const data = await cacheProxy[eventData];
-  const tabContent = document.getElementById("tabContent");
-  tabContent.innerHTML = "";
+  const containerEventsCards = document.getElementById("containerEventsCards");
+  containerEventsCards.innerHTML = "";
 
   data.forEach(({ image, title, location: { address, city, state }, date, price }) => {
-    const tabContentCard = document.createElement("div");
-    tabContentCard.classList.add("tabContentCard");
+    const contentCard = document.createElement("div");
+    contentCard.classList.add("contentCard");
 
+    //card
     const imgContent = document.createElement("img");
     imgContent.classList.add('imgContent');
     imgContent.src = image;
     imgContent.alt = title;
-
-    const divBtnLike = document.createElement("div");
-    divBtnLike.classList.add("divBtnLike");
-
-    const buttonContent = document.createElement("button");
-    buttonContent.classList.add("btnLike");
-    buttonContent.type = "button";
-
-    const likeContent = document.createElement('img');
-    likeContent.classList.add('likeContent');
-    likeContent.src = "/images/likeDefault.png";
-    likeContent.alt = "like card events";
 
     const titleContent = document.createElement('h3');
     titleContent.classList.add('titleContent');
@@ -60,22 +49,81 @@ async function renderEventsCards(eventData) {
     priceContent.classList.add("priceContent");
     priceContent.textContent = formatPrice(price);
 
-    buttonContent.appendChild(likeContent);
-    divBtnLike.appendChild(buttonContent);
+    //button like
+    const containerBtnLike = document.createElement("div");
+    containerBtnLike.classList.add("containerBtnLike");
 
-    tabContentCard.append(
+    const buttonContent = document.createElement("button");
+    buttonContent.classList.add("btnLike");
+    buttonContent.type = "button";
+
+    const imgContentLike = document.createElement('img');
+    imgContentLike.classList.add('imgContentLike');
+    imgContentLike.src = "/images/likeDefault.png";
+    imgContentLike.alt = "like card events";
+
+    buttonContent.appendChild(imgContentLike);
+    containerBtnLike.appendChild(buttonContent);
+
+    //buttons activities
+    const contentbuttonActivities = document.createElement("div");
+    contentbuttonActivities.classList.add("contentbuttonActivities");
+
+    const buttonInterested = document.createElement("button");
+    buttonInterested.classList.add("buttonInterested", "settingButtonActivities");
+    buttonInterested.type = "button";
+    buttonInterested.textContent = "Interested";
+
+    const buttonGoing = document.createElement("button");
+    buttonGoing.classList.add("buttonGoing", "settingButtonActivities");
+    buttonGoing.type = "button";
+    buttonGoing.textContent = "Going!";
+
+    contentbuttonActivities.appendChild(buttonInterested);
+    contentbuttonActivities.appendChild(buttonGoing);
+
+    contentCard.append(
       imgContent,
-      divBtnLike,
+      containerBtnLike,
       titleContent,
       timeContent,
       locationContent,
-      priceContent
+      priceContent,
+      contentbuttonActivities
     );
-    tabContent.appendChild(tabContentCard);
+    containerEventsCards.appendChild(contentCard);
 
     clickbuttonLike(buttonContent);
+    changesClickButtonInterested(buttonInterested, buttonGoing,contentbuttonActivities);
+
   });
 }
+
+function changesClickButtonInterested(buttonInterested, buttonGoing,contentbuttonActivities) {
+  buttonInterested.addEventListener("click", function () {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = "You're interested in going.";
+    const linkreturn = document.createElement("a");
+    linkreturn.textContent = "Changed your mind?";
+    paragraph.style.textAlign = "left"
+    linkreturn.style.textAlign = "left"
+
+    buttonGoing.classList.remove("settingButtonActivities");
+    buttonGoing.classList.add("changeGoing");
+    buttonInterested.style.display = "none";
+    contentbuttonActivities.style.display = "block"
+    contentbuttonActivities.style.textAlign = "center"
+
+
+    contentbuttonActivities.appendChild(paragraph);
+    contentbuttonActivities.appendChild(linkreturn);
+
+  });
+}
+
+
+
+
 
 function clickbuttonLike(buttonContent) {
   buttonContent.addEventListener("click", function () {
@@ -92,7 +140,7 @@ function clickbuttonLike(buttonContent) {
   });
 }
 
-function bottonSelected() {
+function buttonSelected() {
   const tabs = document.getElementsByClassName("tab");
   const tabsArray = [...tabs];
 
@@ -115,4 +163,4 @@ function bottonSelected() {
   });
 }
 
-export { renderStructureTabs, bottonSelected,};
+export { renderStructureTabs, buttonSelected, };

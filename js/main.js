@@ -1,4 +1,4 @@
-import { renderStructureTabs, bottonSelected} from "./initPage/initPage.js";
+import { renderStructureTabs, buttonSelected} from "./initPage/initPage.js";
 
 renderStructureTabs();
-bottonSelected();
+buttonSelected();

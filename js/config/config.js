@@ -25,7 +25,6 @@ const tabsButton = [
 //path and image name for the like.
 
 const defaultImage = "/images/likeDefault.png";
-const alternateImage = "/images/likeCardEvent.png";
-
+const alternateImage = "/images/likeCardEventBlue.png";
 
 export { tabsButton,defaultImage,alternateImage };
