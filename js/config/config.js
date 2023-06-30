@@ -27,4 +27,8 @@ const tabsButton = [
 const defaultImage = "/images/likeDefault.png";
 const alternateImage = "/images/likeCardEventBlue.png";
 
-export { tabsButton,defaultImage,alternateImage };
+//Attendance Check Image
+
+const checkImage = "/images/validation.png";
+
+export { tabsButton,defaultImage,alternateImage,checkImage };
