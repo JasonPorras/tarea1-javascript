@@ -1,4 +1,6 @@
-import { renderStructureTabs, buttonSelected} from "./initPage/initPage.js";
+import { renderStructureTabs, buttonSelected} from "../js/modules/initPage.js";
+import { createContentCard } from "./modules/renderEventsCard.js";
 
 renderStructureTabs();
 buttonSelected();
+createContentCard();

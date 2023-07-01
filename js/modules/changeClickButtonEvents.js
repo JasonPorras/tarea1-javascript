@@ -1,5 +1,5 @@
 import { insertElementsBefore, removeElements } from "../utils/formatClickButtonEvents.js";
-import { checkImage } from "../config/config.js";
+import { checkImage, defaultImage, alternateImage } from "../config/config.js";
 
 function changesClickButtonInterested(buttonInterested, buttonGoing, contentbuttonActivities) {
   buttonInterested.addEventListener("click", function () {
@@ -98,4 +98,19 @@ function imageValidationGoing(checkImage) {
   return imageValidation;
 }
 
-export { changesClickButtonInterested, changesClickButtonGoing }
+function clickbuttonLike(buttonContent) {
+  buttonContent.addEventListener("click", function () {
+    const image = buttonContent.querySelector("img");
+    const isLiked = image.classList.contains("liked");
+
+    if (isLiked) {
+      image.src = defaultImage;
+      image.classList.remove("liked");
+    } else {
+      image.src = alternateImage;
+      image.classList.add("liked");
+    }
+  });
+}
+
+export { changesClickButtonInterested, changesClickButtonGoing,clickbuttonLike }

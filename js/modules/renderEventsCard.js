@@ -1,25 +1,6 @@
 import { cacheProxy } from "../api/cacheProxy.js";
-import { tabsButton, defaultImage, alternateImage} from "../../js/config/config.js";
 import { formatLocation, formatDate, formatPrice } from "../utils/fomatEventsCards.js"
-import { changesClickButtonInterested,changesClickButtonGoing } from "../changeClickButtonEvents/changeClickButtonEvents.js";
-
-
-
-function renderStructureTabs() {
-  const tabList = document.getElementById("tabList");
-
-  tabsButton.forEach(function ({ label, category }) {
-    const li = document.createElement("li");
-    const button = document.createElement("button");
-
-    button.classList.add("tab");
-    button.textContent = label;
-    button.setAttribute("data-category", category);
-
-    li.appendChild(button);
-    tabList.appendChild(li);
-  });
-}
+import { changesClickButtonInterested,changesClickButtonGoing,clickbuttonLike } from "./changeClickButtonEvents.js";
 
 async function renderEventsCards(eventData) {
   const data = await cacheProxy[eventData];
@@ -139,42 +120,4 @@ function createButton(text, className) {
   return button;
 }
 
-function clickbuttonLike(buttonContent) {
-  buttonContent.addEventListener("click", function () {
-    const image = buttonContent.querySelector("img");
-    const isLiked = image.classList.contains("liked");
-
-    if (isLiked) {
-      image.src = defaultImage;
-      image.classList.remove("liked");
-    } else {
-      image.src = alternateImage;
-      image.classList.add("liked");
-    }
-  });
-}
-
-function buttonSelected() {
-  const tabs = document.getElementsByClassName("tab");
-  const tabsArray = [...tabs];
-
-  tabsArray.forEach((tab, index) => {
-    tab.addEventListener("click", async function () {
-      const eventData = this.getAttribute("data-category");
-      renderEventsCards(eventData);
-
-      tabsArray.forEach((tab) => {
-        tab.classList.remove("selected");
-      });
-      tab.classList.add("selected");
-    });
-
-    if (index === 0) {
-      tab.classList.add("selected");
-      const eventData = tab.getAttribute("data-category");
-      renderEventsCards(eventData);
-    }
-  });
-}
-
-export { renderStructureTabs, buttonSelected, };
+export { renderEventsCards,createContentCard }
