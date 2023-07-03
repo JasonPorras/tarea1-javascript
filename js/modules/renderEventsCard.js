@@ -7,14 +7,13 @@ async function renderEventsCards(eventData) {
   const containerEventsCards = document.getElementById("containerEventsCards");
   containerEventsCards.innerHTML = "";
 
-  data.forEach(({ image, title, location: { address, city, state }, date, price }) => {
-    const contentCard = createContentCard(image, title, address, city, state, date, price);
-    
+  data.forEach(({id, image, title, location: { address, city, state }, date, price }) => {
+    const contentCard = createContentCard(id,image, title, address, city, state, date, price);
     containerEventsCards.appendChild(contentCard);
   });
 }
 
-function createContentCard(image, title, address, city, state, date, price) {
+function createContentCard(id,image, title, address, city, state, date, price) {
   const contentCard = document.createElement("div");
   contentCard.classList.add("contentCard");
 
@@ -33,7 +32,7 @@ function createContentCard(image, title, address, city, state, date, price) {
     timeContent,
     locationContent,
     priceContent,
-    contentbuttonActivities
+    contentbuttonActivities,
   );
 
   return contentCard;
@@ -120,4 +119,4 @@ function createButton(text, className) {
   return button;
 }
 
-export { renderEventsCards,createContentCard }
+export { renderEventsCards}

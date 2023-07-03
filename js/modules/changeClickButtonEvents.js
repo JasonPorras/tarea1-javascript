@@ -1,7 +1,8 @@
 import { insertElementsBefore, removeElements } from "../utils/formatClickButtonEvents.js";
 import { checkImage, defaultImage, alternateImage } from "../config/config.js";
+import { addToFavorites, addToGoing, addToInterested } from "../stateEvents/stateEvents.js";
 
-function changesClickButtonInterested(buttonInterested, buttonGoing, contentbuttonActivities) {
+function changesClickButtonInterested(buttonInterested, buttonGoing, contentbuttonActivities,id,title) {
   buttonInterested.addEventListener("click", function () {
     const paragraphInterested = createParagraph("You're interested in going.");
     const linkReturnInterested = createLink("Changed your mind?", "#");
@@ -13,6 +14,8 @@ function changesClickButtonInterested(buttonInterested, buttonGoing, contentbutt
     insertElementsBefore(contentbuttonActivities, [paragraphInterested, linkReturnInterested], buttonGoing);
 
     changesClicklinkReturnInterested(linkReturnInterested, paragraphInterested, buttonInterested, buttonGoing, contentbuttonActivities);
+  
+    addToInterested("interested")
   });
 }
 
@@ -56,6 +59,8 @@ function changesClickButtonGoing(buttonGoing, buttonInterested) {
     insertElementsBefore(contentbuttonActivities, [validationGoing, containerTextGoing], buttonGoing);
 
     changesClicklinkReturnGoing(linkReturnGoing, paragraphGoing, buttonInterested, buttonGoing, contentbuttonActivities);
+  
+    addToGoing("Going")
   });
 }
 
@@ -109,6 +114,7 @@ function clickbuttonLike(buttonContent) {
     } else {
       image.src = alternateImage;
       image.classList.add("liked");
+      addToFavorites("Favorite")
     }
   });
 }

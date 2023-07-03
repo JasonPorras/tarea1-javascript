@@ -17,8 +17,6 @@ function renderStructureTabs() {
   });
 }
 
-renderEventsCards();
-
 function buttonSelected() {
   const tabs = document.getElementsByClassName("tab");
   const tabsArray = [...tabs];
