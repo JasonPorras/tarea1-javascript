@@ -1,3 +1,4 @@
+import { tabsButton } from "../config/config.js";
 import { fetchEventsByCategory } from "./api.js";
 
 const cache = {};
@@ -7,6 +8,11 @@ const handler = {
     if (obj[prop]) {
       return Reflect.get(obj, prop);
     } else {
+      const tabExists = tabsButton.some(tab => tab.category === prop);
+      if (!tabExists) {
+        return [];
+      }
+
       try {
         obj[prop] = await fetchEventsByCategory(prop);
         return Reflect.get(obj, prop);
@@ -16,7 +22,6 @@ const handler = {
     }
   },
 };
-
 const cacheProxy = new Proxy(cache, handler);
 
 export { cacheProxy };

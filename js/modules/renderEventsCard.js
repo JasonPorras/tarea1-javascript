@@ -1,19 +1,24 @@
 import { cacheProxy } from "../api/cacheProxy.js";
 import { formatLocation, formatDate, formatPrice } from "../utils/fomatEventsCards.js"
-import { changesClickButtonInterested,changesClickButtonGoing,clickbuttonLike } from "./changeClickButtonEvents.js";
+import { changesClickButtonInterested, changesClickButtonGoing, clickbuttonLike } from "./changeClickButtonEvents.js";
 
 async function renderEventsCards(eventData) {
   const data = await cacheProxy[eventData];
   const containerEventsCards = document.getElementById("containerEventsCards");
+
+  if (!data || data.length === 0) {
+    return;
+  }
+
   containerEventsCards.innerHTML = "";
 
-  data.forEach(({id, image, title, location: { address, city, state }, date, price }) => {
-    const contentCard = createContentCard(id,image, title, address, city, state, date, price);
+  data.forEach(({ id, image, title, location: { address, city, state }, date, price }) => {
+    const contentCard = createContentCard(id, image, title, address, city, state, date, price);
     containerEventsCards.appendChild(contentCard);
   });
 }
 
-function createContentCard(id,image, title, address, city, state, date, price) {
+function createContentCard(id, image, title, address, city, state, date, price) {
   const contentCard = document.createElement("div");
   contentCard.classList.add("contentCard");
 
@@ -119,4 +124,4 @@ function createButton(text, className) {
   return button;
 }
 
-export { renderEventsCards}
+export { renderEventsCards }

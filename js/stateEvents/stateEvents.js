@@ -29,7 +29,7 @@ if (storedState) {
 const state = JSON.parse(storedState);
 }
 
-console.log(storedState);
-console.log(state);
+// console.log(storedState);
+// console.log(state);
 
 export {addToFavorites,addToInterested,addToGoing}

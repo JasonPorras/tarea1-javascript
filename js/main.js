@@ -1,4 +1,5 @@
 import { renderStructureTabs, buttonSelected} from "../js/modules/initPage.js";
+import { tabListId, tabsButton } from "./config/config.js";
 
-renderStructureTabs();
+renderStructureTabs(tabListId, tabsButton);
 buttonSelected();
