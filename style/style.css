@@ -71,7 +71,6 @@ img {
 
 .contentCard {
   background-color: white;
-  /* height: 480px; */
 }
 
 .contentCard>.titleContent,
@@ -236,4 +235,8 @@ td:nth-child(7n+1) {
 
 td:nth-child(7n) {
   color: blue;
+}
+
+.calendarHeader{
+  display: flex;
 }

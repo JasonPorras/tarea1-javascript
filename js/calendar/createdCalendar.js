@@ -14,14 +14,16 @@ function createCalendar() {
     const previousButton = createPreviousButton();
     const nextButton = createNextButton();
     const calendarTable = createCalendarTable(month, year);
-  
+
     calendarContainer.innerHTML = "";
-    
+
     const calendarHeader = document.createElement("div");
+    calendarHeader.classList.add("calendarHeader");
+
     calendarHeader.appendChild(previousButton);
     calendarHeader.appendChild(monthYearElement);
     calendarHeader.appendChild(nextButton);
-    
+
     calendarContainer.appendChild(calendarHeader);
     calendarContainer.appendChild(calendarTable);
   }
@@ -34,14 +36,18 @@ function createCalendar() {
 
   function createPreviousButton() {
     const previousButton = document.createElement("button");
-    previousButton.textContent = "Mes anterior";
+    const previousButtonImg = document.createElement("img");
+    previousButtonImg.src = "images/arrowLeft.png";
+    previousButtonImg.alt = "Mes anterior";
+    previousButtonImg.className.add
+    previousButton.appendChild(previousButtonImg);
     previousButton.addEventListener("click", previousMonth);
     return previousButton;
   }
 
   function createNextButton() {
     const nextButton = document.createElement("button");
-    nextButton.textContent = "Mes siguiente";
+    nextButton.textContent = "Mes siguient";
     nextButton.addEventListener("click", nextMonth);
     return nextButton;
   }
@@ -77,11 +83,14 @@ function createCalendar() {
 
   function createHeaderRow() {
     const headerRow = document.createElement("tr");
-    ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"].forEach((day) => {
+    const daysOfWeek = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+    for (let i = 0; i < daysOfWeek.length; i++) {
       const headerCell = document.createElement("th");
-      headerCell.textContent = day;
+      headerCell.textContent = daysOfWeek[i];
       headerRow.appendChild(headerCell);
-    });
+    }
+
     return headerRow;
   }
 
