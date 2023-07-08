@@ -190,33 +190,50 @@ text-decoration: underline 2px;
   padding-left: 10px;
 }
 
-/* Estilos para el contenedor del calendario */
 #calendarContainer {
-  width: 100%;
-  max-width: 500px;
+  width: 400px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
 }
 
-/* Estilos para el título del calendario */
 h2 {
   text-align: center;
 }
 
-/* Estilos para el cuerpo del calendario */
-.calendar-body {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
 }
 
-/* Estilos para los días del calendario */
-.calendar-body div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 10px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
   border: 1px solid #ccc;
-  background-color: #fff;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+td:nth-child(7n+1) {
+  color: red;
+}
+
+td:nth-child(7n) {
+  color: blue;
 }
