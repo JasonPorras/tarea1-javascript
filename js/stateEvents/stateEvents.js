@@ -1,7 +1,7 @@
 const state = {
   favoritos: [],
   interesados: [],
-  going: []
+  going: [],
 };
 
 function addToFavorites(nombre) {
@@ -23,13 +23,9 @@ function saveState() {
   localStorage.setItem("myState", JSON.stringify(state));
 }
 
-// Recuperar el estado almacenado, si existe
 const storedState = localStorage.getItem("myState");
 if (storedState) {
-const state = JSON.parse(storedState);
+  const state = JSON.parse(storedState);
 }
 
-// console.log(storedState);
-// console.log(state);
-
-export {addToFavorites,addToInterested,addToGoing}
+export { addToFavorites, addToInterested, addToGoing };

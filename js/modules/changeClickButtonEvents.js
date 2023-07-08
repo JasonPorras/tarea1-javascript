@@ -1,8 +1,21 @@
-import { insertElementsBefore, removeElements } from "../utils/formatClickButtonEvents.js";
+import {
+  insertElementsBefore,
+  removeElements,
+} from "../utils/formatClickButtonEvents.js";
 import { checkImage, defaultImage, alternateImage } from "../config/config.js";
-import { addToFavorites, addToGoing, addToInterested } from "../stateEvents/stateEvents.js";
+import {
+  addToFavorites,
+  addToGoing,
+  addToInterested,
+} from "../stateEvents/stateEvents.js";
 
-function changesClickButtonInterested(buttonInterested, buttonGoing, contentbuttonActivities,id,title) {
+function changesClickButtonInterested(
+  buttonInterested,
+  buttonGoing,
+  contentbuttonActivities,
+  id,
+  title
+) {
   buttonInterested.addEventListener("click", function () {
     const paragraphInterested = createParagraph("You're interested in going.");
     const linkReturnInterested = createLink("Changed your mind?", "#");
@@ -11,15 +24,31 @@ function changesClickButtonInterested(buttonInterested, buttonGoing, contentbutt
     buttonInterested.style.display = "none";
     contentbuttonActivities.style.display = "block";
 
-    insertElementsBefore(contentbuttonActivities, [paragraphInterested, linkReturnInterested], buttonGoing);
+    insertElementsBefore(
+      contentbuttonActivities,
+      [paragraphInterested, linkReturnInterested],
+      buttonGoing
+    );
 
-    changesClicklinkReturnInterested(linkReturnInterested, paragraphInterested, buttonInterested, buttonGoing, contentbuttonActivities);
-  
-    addToInterested("interested")
+    changesClicklinkReturnInterested(
+      linkReturnInterested,
+      paragraphInterested,
+      buttonInterested,
+      buttonGoing,
+      contentbuttonActivities
+    );
+
+    addToInterested("interested");
   });
 }
 
-function changesClicklinkReturnInterested(linkReturnInterested, paragraphInterested, buttonInterested, buttonGoing, contentbuttonActivities) {
+function changesClicklinkReturnInterested(
+  linkReturnInterested,
+  paragraphInterested,
+  buttonInterested,
+  buttonGoing,
+  contentbuttonActivities
+) {
   linkReturnInterested.addEventListener("click", function (event) {
     event.preventDefault();
     removeElements([paragraphInterested, linkReturnInterested]);
@@ -35,8 +64,10 @@ function changesClickButtonGoing(buttonGoing, buttonInterested) {
   buttonGoing.addEventListener("click", function () {
     const contentbuttonActivities = buttonGoing.parentNode;
 
-    const paragraphInterested = contentbuttonActivities.querySelector(".paragraph");
-    const linkReturnInterested = contentbuttonActivities.querySelector(".linkReturn");
+    const paragraphInterested =
+      contentbuttonActivities.querySelector(".paragraph");
+    const linkReturnInterested =
+      contentbuttonActivities.querySelector(".linkReturn");
     if (paragraphInterested && linkReturnInterested) {
       removeElements([paragraphInterested, linkReturnInterested]);
     }
@@ -56,24 +87,43 @@ function changesClickButtonGoing(buttonGoing, buttonInterested) {
     buttonInterested.style.display = "none";
     contentbuttonActivities.style.display = "flex";
     contentbuttonActivities.style.justifyContent = "left";
-    insertElementsBefore(contentbuttonActivities, [validationGoing, containerTextGoing], buttonGoing);
+    insertElementsBefore(
+      contentbuttonActivities,
+      [validationGoing, containerTextGoing],
+      buttonGoing
+    );
 
-    changesClicklinkReturnGoing(linkReturnGoing, paragraphGoing, buttonInterested, buttonGoing, contentbuttonActivities);
-  
-    addToGoing("Going")
+    changesClicklinkReturnGoing(
+      linkReturnGoing,
+      paragraphGoing,
+      buttonInterested,
+      buttonGoing,
+      contentbuttonActivities
+    );
+
+    addToGoing("Going");
   });
 }
 
-function changesClicklinkReturnGoing(linkReturnGoing, paragraphGoing, buttonInterested, buttonGoing, contentbuttonActivities) {
-  const selectContainerText = contentbuttonActivities.querySelector(".containerTextGoing");
-  const selectImageValidation = contentbuttonActivities.querySelector(".imageValidation");
+function changesClicklinkReturnGoing(
+  linkReturnGoing,
+  paragraphGoing,
+  buttonInterested,
+  buttonGoing,
+  contentbuttonActivities
+) {
+  const selectContainerText = contentbuttonActivities.querySelector(
+    ".containerTextGoing"
+  );
+  const selectImageValidation =
+    contentbuttonActivities.querySelector(".imageValidation");
 
   linkReturnGoing.addEventListener("click", function (event) {
     event.preventDefault();
     removeElements([selectContainerText, selectImageValidation]);
     buttonGoing.style.display = "flex";
     buttonInterested.style.display = "flex";
-    contentbuttonActivities.style.display = "flex"
+    contentbuttonActivities.style.display = "flex";
     contentbuttonActivities.style.justifyContent = "space-around";
     buttonGoing.style.justifyContent = "center";
     buttonInterested.style.justifyContent = "center";
@@ -97,7 +147,7 @@ function createLink(text, href) {
 
 function imageValidationGoing(checkImage) {
   const imageValidation = document.createElement("img");
-  imageValidation.classList.add('imageValidation');
+  imageValidation.classList.add("imageValidation");
   imageValidation.src = checkImage;
   imageValidation.alt = "Imagen validation green";
   return imageValidation;
@@ -114,9 +164,13 @@ function clickbuttonLike(buttonContent) {
     } else {
       image.src = alternateImage;
       image.classList.add("liked");
-      addToFavorites("Favorite")
+      addToFavorites("Favorite");
     }
   });
 }
 
-export { changesClickButtonInterested, changesClickButtonGoing,clickbuttonLike }
+export {
+  changesClickButtonInterested,
+  changesClickButtonGoing,
+  clickbuttonLike,
+};

@@ -1,7 +1,6 @@
 import { createCalendar } from "../calendar/createdCalendar.js";
 import { renderEventsCards } from "../modules/renderEventsCard.js";
 
-
 function renderStructureTabs(tabListId, tabsButton) {
   const tabList = document.getElementById(tabListId);
 
@@ -28,7 +27,7 @@ function buttonSelected() {
       const calendarContainer = document.getElementById("calendarContainer");
 
       if (eventData === "calendar") {
-        createCalendar()
+        createCalendar();
         calendarContainer.style.display = "block";
       } else {
         renderEventsCards(eventData);
@@ -49,4 +48,4 @@ function buttonSelected() {
   });
 }
 
-export { renderStructureTabs, buttonSelected, };
+export { renderStructureTabs, buttonSelected };

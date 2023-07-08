@@ -10,4 +10,4 @@ function removeElements(elements) {
   });
 }
 
-export {insertElementsBefore,removeElements}
+export { insertElementsBefore, removeElements };

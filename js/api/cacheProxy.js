@@ -8,7 +8,7 @@ const handler = {
     if (obj[prop]) {
       return Reflect.get(obj, prop);
     } else {
-      const tabExists = tabsButton.some(tab => tab.category === prop);
+      const tabExists = tabsButton.some((tab) => tab.category === prop);
       if (!tabExists) {
         return [];
       }
@@ -17,7 +17,9 @@ const handler = {
         obj[prop] = await fetchEventsByCategory(prop);
         return Reflect.get(obj, prop);
       } catch (error) {
-        throw new Error("Error al obtener los eventos por categoría: " + error.message);
+        throw new Error(
+          "Error al obtener los eventos por categoría: " + error.message
+        );
       }
     }
   },

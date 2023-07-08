@@ -1,8 +1,8 @@
 :root {
   --gray-color: rgb(247, 244, 244);
   --black-color: black;
-  --blue-color-btn-activities:rgb(90, 130, 190);
-  --white-color-btn-activities: white ;
+  --blue-color-btn-activities: rgb(90, 130, 190);
+  --white-color-btn-activities: white;
 }
 
 /* Estilo para el cuerpo de la página */
@@ -113,77 +113,78 @@ img {
   justify-content: space-around;
 }
 
-.contentbuttonActivities > .changeGoing{
- margin-left: 2.5%;
+.contentbuttonActivities>.changeGoing {
+  margin-left: 2.5%;
 }
 
-.contentbuttonActivities >.paragraph, .linkReturn{
-  text-align:left ;
+.contentbuttonActivities>.paragraph,
+.linkReturn {
+  text-align: left;
   padding-left: 10px;
 }
 
-.contentbuttonActivities  >.paragraph{
+.contentbuttonActivities>.paragraph {
   margin-bottom: 0px;
   margin-top: 20px;
 }
 
-.settingButtonActivities{
+.settingButtonActivities {
   font-weight: bold;
   font-size: 18px;
-  padding: 10px 20px 10px 20px ;
+  padding: 10px 20px 10px 20px;
   width: 160px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.settingButtonActivities:hover{
-text-decoration: underline 2px;
+.settingButtonActivities:hover {
+  text-decoration: underline 2px;
 }
 
-.buttonInterested{
+.buttonInterested {
   border: 2px solid var(--blue-color-btn-activities);
   background-color: var(--white-color-btn-activities);
   color: var(--blue-color-btn-activities);
 }
 
-.buttonGoing{
+.buttonGoing {
   border: 2px solid var(--blue-color-btn-activities);
   background-color: var(--blue-color-btn-activities);
   color: var(--white-color-btn-activities);
 }
 
-.changeGoing{
+.changeGoing {
   width: 95%;
   margin-top: 5px;
 }
 
-.linkReturn{
+.linkReturn {
   color: rgb(123, 160, 230);
   text-decoration: underline;
 }
 
-.linkReturn:hover{
+.linkReturn:hover {
   color: rgb(39, 102, 36);
 }
 
-.imageValidation{
+.imageValidation {
   width: 30px;
   padding-left: 10px;
 }
 
-.imageValidation{
+.imageValidation {
   width: 40px;
   height: 40px;
   padding-left: 10px;
   padding-top: 3px;
 }
 
-.containerTextGoing > .linkReturn {
+.containerTextGoing>.linkReturn {
   text-align: left;
   padding-left: 10px;
 }
 
-.containerTextGoing >.paragraph{
+.containerTextGoing>.paragraph {
   margin-bottom: 0px;
   margin-top: 5px;
   padding-left: 10px;
@@ -237,6 +238,14 @@ td:nth-child(7n) {
   color: blue;
 }
 
-.calendarHeader{
+.calendarHeader {
   display: flex;
+}
+
+.buttonImg {
+  width: 30%;
+}
+
+.monthYearElement {
+  width: 188px;
 }

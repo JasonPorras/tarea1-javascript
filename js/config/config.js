@@ -4,24 +4,24 @@ const tabListId = "tabList";
 const tabsButton = [
   {
     label: "Music",
-    category: "music"
+    category: "music",
   },
   {
     label: "Sports",
-    category: "sports"
+    category: "sports",
   },
   {
     label: "Business",
-    category: "business"
+    category: "business",
   },
   {
     label: "Food",
-    category: "food"
+    category: "food",
   },
   {
     label: "Art",
-    category: "art"
-  }
+    category: "art",
+  },
 ];
 
 //path and image name for the like.
@@ -38,20 +38,27 @@ const checkImage = "/images/validation.png";
 const tabsAccount = [
   {
     label: "Favorites",
-    category: "favorites"
+    category: "favorites",
   },
   {
     label: "Interested",
-    category: "interested"
+    category: "interested",
   },
   {
     label: "Going",
-    category: "going"
+    category: "going",
   },
   {
     label: "Calendar",
-    category: "calendar"
-  }
-]
+    category: "calendar",
+  },
+];
 
-export {tabListId, tabsButton,defaultImage,alternateImage,checkImage,tabsAccount };
+export {
+  tabListId,
+  tabsButton,
+  defaultImage,
+  alternateImage,
+  checkImage,
+  tabsAccount,
+};

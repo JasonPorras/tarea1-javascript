@@ -3,8 +3,18 @@ function createCalendar() {
   let currentMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
   const monthNames = [
-    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
   ];
 
   const calendarContainer = document.getElementById("calendarContainer");
@@ -30,6 +40,7 @@ function createCalendar() {
 
   function createMonthYearElement(month, year) {
     const monthYearElement = document.createElement("h2");
+    monthYearElement.classList.add("monthYearElement");
     monthYearElement.textContent = `${monthNames[month]} ${year}`;
     return monthYearElement;
   }
@@ -39,7 +50,7 @@ function createCalendar() {
     const previousButtonImg = document.createElement("img");
     previousButtonImg.src = "images/arrowLeft.png";
     previousButtonImg.alt = "Mes anterior";
-    previousButtonImg.className.add
+    previousButtonImg.classList.add("buttonImg");
     previousButton.appendChild(previousButtonImg);
     previousButton.addEventListener("click", previousMonth);
     return previousButton;
@@ -47,7 +58,11 @@ function createCalendar() {
 
   function createNextButton() {
     const nextButton = document.createElement("button");
-    nextButton.textContent = "Mes siguient";
+    const nextButtonImg = document.createElement("img");
+    nextButtonImg.src = "images/arrowRight.png";
+    nextButton.alt = "Mes siguiente";
+    nextButtonImg.classList.add("buttonImg");
+    nextButton.appendChild(nextButtonImg);
     nextButton.addEventListener("click", nextMonth);
     return nextButton;
   }
@@ -83,7 +98,15 @@ function createCalendar() {
 
   function createHeaderRow() {
     const headerRow = document.createElement("tr");
-    const daysOfWeek = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+    const daysOfWeek = [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado",
+    ];
 
     for (let i = 0; i < daysOfWeek.length; i++) {
       const headerCell = document.createElement("th");
@@ -121,4 +144,4 @@ function createCalendar() {
   renderCalendar(currentMonth, currentYear);
 }
 
-export{createCalendar}
+export { createCalendar };
