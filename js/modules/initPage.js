@@ -31,7 +31,7 @@ function buttonSelected() {
         calendarContainer.style.display = "block";
       } else {
         renderEventsCards(eventData);
-        calendarContainer.style.display = "none";
+       
       }
 
       tabsArray.forEach((tab) => {
