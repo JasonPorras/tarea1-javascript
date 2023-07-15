@@ -45,10 +45,15 @@ li button:hover {
 }
 
 .container-main {
+  display: block;
+  background-color: var(--black-color);
+  padding: 30px 0px 0px;
+}
+
+.containerUl {
   display: flex;
   justify-content: center;
-  background-color: var(--black-color);
-  padding: 50px 0px 0px;
+  padding-left: 0px;
 }
 
 .tab.selected {
@@ -62,10 +67,17 @@ img {
   width: 100%;
 }
 
-.linkMyAccount{
-  background-color: aqua;
-  width: 50px;
-  height: 50px;
+.linkMyAccount {
+  text-decoration: none;
+  color: var(--gray-color);
+  font-weight:bold;
+  font-size: 20px;
+}
+
+.linkMyAccount:hover{
+  text-decoration: underline;
+  color: var(--white-color-btn-activities);
+  border: 2px;
 }
 
 #containerEventsCards {
@@ -117,6 +129,19 @@ img {
 .contentbuttonActivities {
   display: flex;
   justify-content: space-around;
+}
+
+.arrowLink {
+  width: 25px;
+  object-fit: cover;
+  margin-left: 10px;
+  margin-right: 40px;
+}
+
+.containerLinkMyAccount {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 40px;
 }
 
 .contentbuttonActivities>.changeGoing {
@@ -171,11 +196,6 @@ img {
 
 .linkReturn:hover {
   color: rgb(39, 102, 36);
-}
-
-.imageValidation {
-  width: 30px;
-  padding-left: 10px;
 }
 
 .imageValidation {
