@@ -1,26 +1,27 @@
 import { renderStructureTabs, buttonSelected } from "../modules/initPage.js";
 import { tabListId, tabsButton } from "../config/config.js";
-import { createLink } from "../modules/changeClickButtonEvents.js";
+import { createImage, createLink } from "../modules/changeClickButtonEvents.js";
 
 renderStructureTabs(tabListId, tabsButton);
 buttonSelected();
 
-const hola = createLink("My account", "/account.html", "linkMyAccount");
 
-const containerMain = document.querySelector(".container-main");
-const containerUlTabs = document.querySelector(".containerUlTabs");
+function createLinkPages() {
+    const arrowLink = createImage("/images/rightArrowLink.png", "arrowLink", "link para otra página");
+    const accountLink = createLink("My account", "/account.html", "linkMyAccount");
 
-const containerLinkMyAccount = document.createElement("div")
-containerLinkMyAccount.className = ("containerLinkMyAccount")
+    const containerMain = document.querySelector(".container-main");
+    const containerUlTabs = document.querySelector(".containerUlTabs");
 
-const arrowLink = document.createElement("img");
-arrowLink.classList.add("arrowLink");
-arrowLink.src = "/images/rightArrowLink.png";
-arrowLink.alt = "link para otra página";
+    const containerLinkMyAccount = document.createElement("div")
+    containerLinkMyAccount.className = ("containerLinkMyAccount")
 
-containerLinkMyAccount.appendChild(hola);
-containerLinkMyAccount.appendChild(arrowLink);
+    containerLinkMyAccount.appendChild(accountLink);
+    containerLinkMyAccount.appendChild(arrowLink);
 
-containerMain.insertBefore(containerLinkMyAccount, containerUlTabs);
+    containerMain.insertBefore(containerLinkMyAccount, containerUlTabs);
+}
 
+createLinkPages()
 
+export { createLinkPages }

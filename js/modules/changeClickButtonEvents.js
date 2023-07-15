@@ -5,7 +5,7 @@ import { addToFavorites, addToGoing, addToInterested, } from "../stateEvents/sta
 function changesClickButtonInterested(buttonInterested, buttonGoing, contentbuttonActivities, id, title) {
   buttonInterested.addEventListener("click", function () {
     const paragraphInterested = createParagraph("You're interested in going.");
-    const linkReturnInterested = createLink("Changed your mind?", "#");
+    const linkReturnInterested = createLink("Changed your mind?", "#", "linkReturn");
 
     buttonGoing.classList.add("changeGoing");
     buttonInterested.style.display = "none";
@@ -48,7 +48,7 @@ function changesClickButtonGoing(buttonGoing, buttonInterested) {
 
     const paragraphGoing = createParagraph("You're going to this event!");
     const linkReturnGoing = createLink("Changed your mind?", "#", "linkReturn");
-    const validationGoing = createImage(checkImage);
+    const validationGoing = createImage(checkImage,"imageValidation","Imagen validation green");
 
     containerTextGoing.appendChild(paragraphGoing);
     containerTextGoing.appendChild(linkReturnGoing);
@@ -89,19 +89,20 @@ function createParagraph(text) {
   return paragraph;
 }
 
-function createLink(text, href,pato) {
+function createLink(text, href, style) {
   const link = document.createElement("a");
-  link.classList.add = pato;
   link.textContent = text;
   link.href = href;
+  link.classList.add(style);
   return link;
 }
 
-function createImage(checkImage) {
+
+function createImage(checkImage,style,description) {
   const imagesLink = document.createElement("img");
-  imagesLink.classList.add("imageValidation");
+  imagesLink.classList.add(style);
   imagesLink.src = checkImage;
-  imagesLink.alt = "Imagen validation green";
+  imagesLink.alt = description;
   return imagesLink;
 }
 
@@ -121,4 +122,4 @@ function clickbuttonLike(buttonContent) {
   });
 }
 
-export { changesClickButtonInterested, changesClickButtonGoing, clickbuttonLike, createLink };
+export { changesClickButtonInterested, changesClickButtonGoing, clickbuttonLike, createLink, createImage };
