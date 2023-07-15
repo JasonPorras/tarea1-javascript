@@ -62,6 +62,12 @@ img {
   width: 100%;
 }
 
+.linkMyAccount{
+  background-color: aqua;
+  width: 50px;
+  height: 50px;
+}
+
 #containerEventsCards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
