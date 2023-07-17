@@ -4,6 +4,8 @@ import { renderEventsCards } from "../modules/renderEventsCard.js";
 function renderStructureTabs(tabListId, tabsButton) {
   const tabList = document.getElementById(tabListId);
 
+  tabList.innerHTML = '';
+
   tabsButton.forEach(function ({ label, category }) {
     const li = document.createElement("li");
     const button = document.createElement("button");

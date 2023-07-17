@@ -4,5 +4,3 @@ import { createLinkPages } from "./main.js";
 
 renderStructureTabs(tabListId, tabsAccount);
 buttonSelected();
-
-createLinkPages();
