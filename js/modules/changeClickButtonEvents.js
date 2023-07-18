@@ -1,6 +1,7 @@
 import { insertElementsBefore, removeElements, } from "../utils/formatClickButtonEvents.js";
 import { checkImage, defaultImage, alternateImage } from "../config/config.js";
-import { addToFavorites, addToGoing, addToInterested, } from "../stateEvents/stateEvents.js";
+import { getState, setStateFavorites } from "../pages/main.js";
+
 
 function changesClickButtonInterested(buttonInterested, buttonGoing, contentbuttonActivities, id, title) {
   buttonInterested.addEventListener("click", function () {
@@ -15,7 +16,6 @@ function changesClickButtonInterested(buttonInterested, buttonGoing, contentbutt
 
     changesClicklinkReturnInterested(linkReturnInterested, paragraphInterested, buttonInterested, buttonGoing, contentbuttonActivities);
 
-    addToInterested("interested");
   });
 }
 
@@ -48,7 +48,7 @@ function changesClickButtonGoing(buttonGoing, buttonInterested) {
 
     const paragraphGoing = createParagraph("You're going to this event!");
     const linkReturnGoing = createLink("Changed your mind?", "#", "linkReturn");
-    const validationGoing = createImage(checkImage,"imageValidation","Imagen validation green");
+    const validationGoing = createImage(checkImage, "imageValidation", "Imagen validation green");
 
     containerTextGoing.appendChild(paragraphGoing);
     containerTextGoing.appendChild(linkReturnGoing);
@@ -62,7 +62,6 @@ function changesClickButtonGoing(buttonGoing, buttonInterested) {
 
     changesClicklinkReturnGoing(linkReturnGoing, paragraphGoing, buttonInterested, buttonGoing, contentbuttonActivities);
 
-    addToGoing("Going");
   });
 }
 
@@ -98,7 +97,7 @@ function createLink(text, href, style) {
 }
 
 
-function createImage(checkImage,style,description) {
+function createImage(checkImage, style, description) {
   const imagesLink = document.createElement("img");
   imagesLink.classList.add(style);
   imagesLink.src = checkImage;
@@ -117,7 +116,9 @@ function clickbuttonLike(buttonContent) {
     } else {
       image.src = alternateImage;
       image.classList.add("liked");
-      addToFavorites("Favorite");
+      const name = "jason";
+      setStateFavorites(name);
+      console.log(getState());
     }
   });
 }
