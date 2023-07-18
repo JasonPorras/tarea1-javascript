@@ -70,11 +70,11 @@ img {
 .linkMyAccount {
   text-decoration: none;
   color: var(--gray-color);
-  font-weight:bold;
+  font-weight: bold;
   font-size: 20px;
 }
 
-.linkMyAccount:hover{
+.linkMyAccount:hover {
   text-decoration: underline;
   color: var(--white-color-btn-activities);
   border: 2px;
@@ -138,10 +138,22 @@ img {
   margin-right: 40px;
 }
 
+.arrowLinkLeft{
+  width: 25px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
 .containerLinkMyAccount {
   display: flex;
   justify-content: end;
   margin-bottom: 40px;
+}
+
+.containerLinkToBack {
+  display: flex;
+  margin-bottom: 40px;
+  margin-left: 40px;
 }
 
 .contentbuttonActivities>.changeGoing {
