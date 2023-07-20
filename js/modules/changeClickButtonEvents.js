@@ -2,7 +2,6 @@ import { insertElementsBefore, removeElements, } from "../utils/formatClickButto
 import { checkImage, defaultImage, alternateImage } from "../config/config.js";
 import { getState, setStateFavorites } from "../pages/main.js";
 
-
 function changesClickButtonInterested(buttonInterested, buttonGoing, contentbuttonActivities, id, title) {
   buttonInterested.addEventListener("click", function () {
     const paragraphInterested = createParagraph("You're interested in going.");
@@ -104,6 +103,8 @@ function createImage(checkImage, style, description) {
   imagesLink.alt = description;
   return imagesLink;
 }
+
+
 
 function clickbuttonLike(buttonContent) {
   buttonContent.addEventListener("click", function () {

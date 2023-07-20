@@ -19,8 +19,6 @@ function setStateFavorites(newState) {
   state.favorites = [...state.favorites, newState];
 }
 
-
-
   export {getState, setStateFavorites };
 
 

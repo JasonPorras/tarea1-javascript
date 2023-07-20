@@ -15,8 +15,16 @@ async function renderEventsCards(eventData) {
   data.forEach(({ id, image, title, location: { address, city, state }, date, price }) => {
     const contentCard = createContentCard(id, image, title, address, city, state, date, price);
     containerEventsCards.appendChild(contentCard);
+
+    
+  const hola = id;
+  console.log(hola);
+
   });
+
 }
+
+
 
 function createContentCard(id, image, title, address, city, state, date, price) {
   const contentCard = document.createElement("div");
