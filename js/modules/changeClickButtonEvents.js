@@ -104,8 +104,6 @@ function createImage(checkImage, style, description) {
   return imagesLink;
 }
 
-
-
 function clickbuttonLike(buttonContent) {
   buttonContent.addEventListener("click", function () {
     const image = buttonContent.querySelector("img");

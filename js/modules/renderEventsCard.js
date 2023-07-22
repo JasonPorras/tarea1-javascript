@@ -24,8 +24,6 @@ async function renderEventsCards(eventData) {
 
 }
 
-
-
 function createContentCard(id, image, title, address, city, state, date, price) {
   const contentCard = document.createElement("div");
   contentCard.classList.add("contentCard");
@@ -97,7 +95,7 @@ function createButtonLike() {
 
   const imgContentLike = document.createElement('img');
   imgContentLike.classList.add('imgContentLike');
-  imgContentLike.src = "/images/likeDefault.png";
+  imgContentLike.src = "./images/likeDefault.png";
   imgContentLike.alt = "like card events";
 
   buttonContent.appendChild(imgContentLike);
